@@ -13,7 +13,6 @@
       "email": "cqc@cuiqingcai.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {},
   "autoload": {
     "psr-4": {
@@ -24,5 +23,6 @@
     "branch-alias": {
       "dev-master": "dev"
     }
-  }
+  },
+  "minimum-stability": "dev"
 }

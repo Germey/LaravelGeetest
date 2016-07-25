@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "laravel/framework": "5.1.*"
+    "laravel/framework": "5.0.*|5.1.*|5.2.*|5.3.*"
   },
   "autoload": {
     "psr-4": {

@@ -53,6 +53,7 @@ class GeetestLib
     public function setGeetestUrl($geetest_url)
     {
         $this->geetest_url = $geetest_url;
+        return $this;
     }
 
     /**

@@ -7,6 +7,9 @@
     "Germey"
   ],
   "license": "MIT",
+  "support": {
+    "email": "cqc@cuiqingcai.com"
+  },
   "authors": [
     {
       "name": "Germey",
@@ -14,6 +17,7 @@
     }
   ],
   "require": {
+    "php": ">=5.4",
     "laravel/framework": "5.1.*"
   },
   "autoload": {
@@ -21,5 +25,6 @@
       "Germey\\Geetest\\": "src/"
     }
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

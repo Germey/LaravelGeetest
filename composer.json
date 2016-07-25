@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
+    "php": ">=5.5.9",
     "laravel/framework": "5.1.*"
   },
   "autoload": {
@@ -25,6 +25,6 @@
       "Germey\\Geetest\\": "src/"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "0.9.0",
   "prefer-stable": true
 }

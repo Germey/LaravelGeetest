@@ -1,6 +1,7 @@
 <?php namespace Germey\Geetest;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,6 +34,10 @@ class GeetestServiceProvider extends ServiceProvider
                 }
                 return false;
             }
+        });
+
+        Blade::extend(function ($value) {
+            return preg_replace('/@define(.+)/', '<?php ${1}; ?>', $value);
         });
 
     }

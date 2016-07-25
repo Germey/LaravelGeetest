@@ -1,5 +1,6 @@
 <?php namespace Germey\Geetest;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class GeetestServiceProvider extends ServiceProvider
@@ -11,7 +12,7 @@ class GeetestServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        
     }
 
     /**

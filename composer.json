@@ -25,6 +25,6 @@
       "Germey\\Geetest\\": "src/"
     }
   },
-  "minimum-stability": "0.9.0",
+  "minimum-stability": "dev",
   "prefer-stable": true
 }

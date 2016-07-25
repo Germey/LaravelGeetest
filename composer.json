@@ -1,0 +1,28 @@
+{
+  "name": "germey/geetest",
+  "description": "Geetest Package for Laravel5",
+  "keywords": [
+    "Geetest",
+    "Laravel",
+    "Germey"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Germey",
+      "email": "cqc@cuiqingcai.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Germey\\Geetest\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.0"
+    }
+  },
+}

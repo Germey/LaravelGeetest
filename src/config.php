@@ -19,4 +19,14 @@ return [
 	|
 	*/
     'geetest_key' => env('GEETEST_KEY'),
+
+    /*
+	|--------------------------------------------------------------------------
+	| Config Geetest URL
+	|--------------------------------------------------------------------------
+	|
+	| Here you can config your geetest url for ajax validation.
+	|
+	*/
+    'geetest_url' => '/auth/geetest',
 ];

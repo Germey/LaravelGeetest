@@ -1,6 +1,5 @@
 <?php namespace Germey\Geetest;
 
-use Germey\Geetest\Geetest;
 
 trait CaptchaGeetest
 {
@@ -10,9 +9,9 @@ trait CaptchaGeetest
     public function getGeetest()
     {
         $user_id = "test";
-        $status = Geetest::pre_process($user_id);
+        $status = Geetest::preProcess($user_id);
         session()->put('gtserver', $status);
         session()->put('user_id', $user_id);
-        echo Geetest::get_response_str();
+        echo Geetest::getResponseStr();
     }
 }

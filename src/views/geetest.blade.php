@@ -25,13 +25,13 @@
                 initGeetest({
                     gt: data.gt,
                     challenge: data.challenge,
-                    product: "float",
+                    product: "{{ $product }}",
                     offline: !data.success
                 }, handlerEmbed);
             }
         });
     };
-    (function(){
-        geetest('{{ Illuminate\Support\Facades\Config::get('geetest.geetest_url') }}');
+    (function() {
+        geetest('{{ $geetest_url?$geetest_url:Illuminate\Support\Facades\Config::get('geetest.geetest_url') }}');
     })();
 </script>

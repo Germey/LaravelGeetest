@@ -12,7 +12,13 @@ class GeetestServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        $this->loadViewsFrom(__DIR__ . '/views', 'geetest');
+
+        $this->publishes([
+            __DIR__.'/views' => base_path('resources/views/vendor/geetest'),
+            __DIR__.'/config.php' => config_path('geetest.php'),
+        ]);
+
     }
 
     /**

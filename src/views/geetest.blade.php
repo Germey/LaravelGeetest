@@ -5,7 +5,7 @@
 <script>
     var geetest = function(url) {
         var handlerEmbed = function(captchaObj) {
-            $("#register-btn").click(function(e) {
+            $("#embed-captcha").closest('form').submit(function(e) {
                 var validate = captchaObj.getValidate();
                 if (!validate) {
                     alert('请正确完成验证码操作!', 'error');

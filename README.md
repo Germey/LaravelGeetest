@@ -16,7 +16,7 @@ $ composer require germey/geetest
 Or you can add following to `require` key in compser.json.
 
 ```json
-"germey/geetest": "dev-master"
+"germey/geetest": "^1.0"
 ```
 
 then run

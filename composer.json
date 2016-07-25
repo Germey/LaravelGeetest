@@ -20,5 +20,6 @@
     "psr-4": {
       "Germey\\Geetest\\": "src/"
     }
-  }
+  },
+  "minimum-stability": "dev"
 }

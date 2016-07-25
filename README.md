@@ -15,7 +15,7 @@ $ composer require germey/geetest
 
 Or you can add following to `require` key in compser.json.
 
-```
+```json
 "germey/geetest": "dev-master"
 ```
 
@@ -27,13 +27,13 @@ $ composer update
 
 Next, You should need to register the service provider. Open up `config/app.php` and add following into the `providers` key.
 
-```
+```php
 Germey\Geetest\GeetestServiceProvider::class 
 ```
 
 And you can register the Geetest Facade in the `aliases` of `config/app.php` if you want.
 
-```
+```php
 'Geetest' => Germey\Geetest\Geetest::class,
 ```
 
@@ -52,7 +52,7 @@ It will also generate a views folder `resources/views/vendor/geetest`, here you 
 ## Usage
 
 Firstly, You need to register in [Geetest](http://www.geetest.com/). Creating an app and get `ID` and `KEY`.
- 
+
 Then configure the in your `.env` file because you'd better not make them public.
 
 Add following to `.env`.
@@ -66,7 +66,7 @@ Next, You need to configure an Ajax validation url. Default is `/auth/geetest`. 
 
 ```php
 use Germey\Geetest\CaptchaGeetest;
-class AuthController extends Controller {
+class AuthController extends Controller {
     use CaptchaGeetest;
 }
 ```
@@ -77,9 +77,9 @@ Also you can use this Trait in other Controller but you need to configure  `geet
 
 Finally, You can use in views like following.
 
-```
+```php
 {!! Geetest::render() !!}
-``` 
+```
 
 Frequently, It will be used in `form`.
 
@@ -96,19 +96,162 @@ When you click the `submit` button, it will verify the Geetest Code. If you didn
 
 Or you can set other style of Geetest.
 
-```
+```php
 {!! Geetest::render('embed') !!}
 {!! Geetest::render('popup') !!}
-``` 
+```
 
 Then it will be embed or popup style in the website. Default to `float`.
 
 If the validation is completed, the form will be submitted successfully.
 
+## Server Validation
+
+What's the reason that Geetest is safe? If it only has client validation of frontend, can we say it is complete? It also has server validation to ensure that the post request is validate.
+
+First I have to say that you can only use Geetest of Frontend. But you can also do simple things to achieve server validation.
+
+You can use `$this->validate()` method to achieve server validation. Here is an example.
+
+```php
+use Illuminate\Support\Facades\Config;
+use Illuminate\Http\Request;
+
+class BaseController extends Controller 
+{
+  /**
+   * @param Request $request
+   */
+  public function postValidate(Request $request)
+  {
+    $result = $this->validate($request, [
+      'geetest_challenge' => 'geetest',
+    ], [
+      'geetest' => Config::get('geetest.server_fail_alert')
+    ]);
+    if ($request) {
+      return 'success';
+    }
+  }
+} 
+```
+
+If we use Geetest, the form will post three extra parameters `geetest_challenge` `geetest_validate` `geetest_seccode`. Geetest use these three parameters to achieve server validation.
+
+If you use ORM, we don't need to add these keys to Model, so you should add following in Model.
+
+```php
+protected $guarded = ['geetest_challenge', 'geetest_validate', 'geetest_seccode'];
+```
+
+You can define alert text by altering `server_fail_alert` in `config/geetest.php`
+
+Also you can use Request to achieve validation.
+
+```php
+<?php namespace App\Http\Requests;
+use App\Http\Requests\Request;
+
+class ValidationRequest extends Request
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'geetest_challenge' => 'geetest'
+        ];
+    }
+
+    /**
+     * Get validation messages.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'geetest' => 'Validation Failed'
+        ];
+    }
+}
+
+```
+
+We can use it in our Controller by Request parameter.
+
+```php
+use Illuminate\Support\Facades\Config;
+use Illuminate\Http\Request;
+use App\Http\Requests\ValidationRequest;
+
+class BaseController extends Controller 
+{
+  /**
+   * @param Request $request
+   */
+  public function postValidate(ValidationRequest $request)
+  {
+    // is Validate
+  }
+} 
+```
+
+## Language
+
+Geetest supports different language.
+
+* Simplified Chinese
+* Traditional Chinese
+* English
+* Japanese
+* Korean
+
+You can configure it in `config/geetest.php` .
+
+Here are key-values of Languge Configuration.
+
+- zh-cn (Simplified Chinese) 
+- zh-tw (Traditional Chinese)
+- en (English)
+- ja (Japanese)
+- ko (Korean)
+
+for example, If you want to use Korean, just change `lang` key to `ko`
+
+```php
+'lang' => 'ko'
+```
+
+## Contribution
+
+If you find something wrong with this package, you can send an email to `cqc@cuiqingcai.com`
+
+Or just send a pull request to this repository. 
+
+Pull Requests are welcome.
+
+## Author
+
+[Germey](http://cuiqingcai.com) , from Beijing China
+
+## License
+
+Laravel Geetest is licensed under [The MIT License (MIT)](https://github.com/Germey/LaravelGeetest/blob/master/LICENSE).
 
 
 
-
-
-
-
+ 

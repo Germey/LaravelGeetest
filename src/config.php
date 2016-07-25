@@ -30,7 +30,25 @@ return [
 	*/
     'geetest_url' => '/auth/geetest',
 
-    
+    /*
+    |--------------------------------------------------------------------------
+    | Config Client Fail Alert Text
+    |--------------------------------------------------------------------------
+    |
+    | Here you can config the alert text when it failed in client.
+    |
+    */
+    'client_fail_alert' => '请正确完成验证码操作',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Config Server Fail Alert
+    |--------------------------------------------------------------------------
+    |
+    | Here you can config the alert text when it failed in server (two factor validation).
+    |
+    */
+    'server_fail_alert' => '验证码校验失败',
 
 
 ];

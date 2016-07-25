@@ -13,7 +13,9 @@
       "email": "cqc@cuiqingcai.com"
     }
   ],
-  "require": {},
+  "require": {
+    "laravel/framework": "5.1.*"
+  },
   "autoload": {
     "psr-4": {
       "Germey\\Geetest\\": "src/"

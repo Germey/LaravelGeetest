@@ -8,7 +8,7 @@
             $("#embed-captcha").closest('form').submit(function(e) {
                 var validate = captchaObj.getValidate();
                 if (!validate) {
-                    alert('请正确完成验证码操作!', 'error');
+                    alert('{{ Config::get('geetest.client_fail_alert')}}');
                     e.preventDefault();
                 }
             });
@@ -32,6 +32,6 @@
         });
     };
     (function() {
-        geetest('{{ $geetest_url?$geetest_url:Illuminate\Support\Facades\Config::get('geetest.geetest_url') }}');
+        geetest('{{ $geetest_url?$geetest_url:Config::get('geetest.geetest_url') }}');
     })();
 </script>

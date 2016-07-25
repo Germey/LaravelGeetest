@@ -103,6 +103,14 @@ Or you can set other style of Geetest.
 
 Then it will be embed or popup style in the website. Default to `float`.
 
+Also, you can set Geetest Ajax Url by following way.
+
+```
+{!! Geetest::setGeetestUrl('/auth/geetest')->render() !!}
+```
+
+By `setGeetestUrl` method you can set Geetest Ajax Url. If it is configured, it will override `geetest_url` configured in `config/geetest.php`.
+
 If the validation is completed, the form will be submitted successfully.
 
 ## Server Validation
@@ -255,3 +263,4 @@ Laravel Geetest is licensed under [The MIT License (MIT)](https://github.com/Ge
 
 
  
+

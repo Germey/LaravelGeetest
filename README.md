@@ -1,5 +1,10 @@
 # Laravel Geetest
 
+[![Build Status](https://travis-ci.org/Germey/LaravelGeetest.svg?branch=master)](https://travis-ci.org/Germey/LaravelGeetest)
+[![DUB](https://img.shields.io/dub/l/vibe-d.svg?maxAge=2592000?style=plastic)]()
+[![Support](https://img.shields.io/badge/support-laravel-orange.svg)]()
+[![Release](https://img.shields.io/badge/release-v1.02-red.svg)]()
+
 Laravel Geetest is a package for Laravel 5 developed by 
 [Germey](http://cuiqingcai.com). It provides simple usage for laravel of [Geetest](http://www.geetest.com/). 
 

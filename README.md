@@ -5,6 +5,8 @@ Laravel Geetest is a package for Laravel 5 developed by
 
 Geetest Demo: [Geetest](http://www.geetest.com/exp_normal)
 
+![Geetest Image Demo](http://opencdn.cuiqingcai.com/QQ20160726-0@2x.png)
+
 ## Installation
 
 Laravel 5.0.0 or later is required.

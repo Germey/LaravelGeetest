@@ -1,6 +1,7 @@
 <?php
 
 use Germey\Geetest\Geetest;
+use Illuminate\Console\Scheduling\Event;
 
 class GeetestTest extends PHPUnit_Framework_TestCase
 {
@@ -15,8 +16,7 @@ class GeetestTest extends PHPUnit_Framework_TestCase
     public function testProcess()
     {
         $user_id = $this->user_id;
-        $status = Geetest::preProcess($user_id);
-        $this->assertTrue($status);
+        Geetest::shouldReceive('preProcess')->once()->with($user_id)->andReturn();
     }
 
     /**
@@ -24,11 +24,18 @@ class GeetestTest extends PHPUnit_Framework_TestCase
      */
     public function testResponseStr()
     {
-        $user_id = $this->user_id;
-        $status = Geetest::preProcess($user_id);
-        Session::put('gtserver', $status);
-        Session::put('user_id', $user_id);
-        $this->assertJson(Geetest::getResponseStr());
+        Geetest::shouldReceive('getResponseStr')->once()->with()->andReturn();
+    }
+
+    /**
+     * Test render.
+     */
+    public function testRender()
+    {
+        Geetest::shouldReceive('render')->once()->with()->andReturn();
+        Geetest::shouldReceive('render')->once()->with('popup')->andReturn();
+        Geetest::shouldReceive('render')->once()->with('embed')->andReturn();
     }
 
 }
+

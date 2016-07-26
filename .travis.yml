@@ -15,4 +15,7 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
 
-script: vendor/bin/phpspec run && phpunit
+script:
+- pwd
+- ls
+- phpunit

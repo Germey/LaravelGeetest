@@ -37,13 +37,13 @@ $ composer update
 Next, You should need to register the service provider. Open up `config/app.php` and add following into the `providers` key.
 
 ```php
-Germey\Geetest\GeetestServiceProvider::class 
+Germey\Geetest\GeetestServiceProvider::class
 ```
 
 And you can register the Geetest Facade in the `aliases` of `config/app.php` if you want.
 
 ```php
-'Geetest' => Germey\Geetest\Geetest::class,
+'Geetest' => Germey\Geetest\Geetest::class
 ```
 
 ## Configuration
@@ -71,7 +71,17 @@ GEETEST_ID=0f1097bef7xxxxxx9afdeced970c63e4
 GEETEST_KEY=c070f0628xxxxxxe68e138b55c56fb3b
 ```
 
-Next, You need to configure an Ajax validation url. Default is `/auth/geetest`. So you can use Trait `Germey\Geetest\CaptchaGeetest` in AuthController which routing '/auth'.
+Next, You need to configure an Ajax validation url route. Default is `/auth/geetest`. 
+
+For example, add this to `routes.php`
+
+```php
+Route::get('auth/geetest','Auth\AuthController@getGeetest');
+```
+
+Or you can use `Route::controller()`  method to achieve this route.
+
+Next, you can use Trait `Germey\Geetest\CaptchaGeetest` in AuthController which routing '/auth'.
 
 ```php
 use Germey\Geetest\CaptchaGeetest;
@@ -146,7 +156,7 @@ class BaseController extends Controller
     ], [
       'geetest' => Config::get('geetest.server_fail_alert')
     ]);
-    if ($request) {
+    if ($result) {
       return 'success';
     }
   }

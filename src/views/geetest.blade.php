@@ -41,3 +41,8 @@
         geetest('{{ $geetest_url?$geetest_url:Config::get('geetest.geetest_url', '/auth/geetest') }}');
     })();
 </script>
+<style>
+.hide {
+    display: none;
+}
+</style>

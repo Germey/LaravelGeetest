@@ -12,12 +12,12 @@ class GeetestLib
     /**
      * @var int
      */
-    public static $connectTimeout = 1;
+    public static $connectTimeout = 0;
 
     /**
      * @var int
      */
-    public static $socketTimeout = 1;
+    public static $socketTimeout = 20;
 
     /**
      * @var

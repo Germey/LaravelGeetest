@@ -1,7 +1,7 @@
 <?php namespace Germey\Geetest;
 
 
-trait CaptchaGeetest
+trait GeetestCaptcha
 {
     /**
      * Get geetest.

@@ -38,7 +38,7 @@
         });
     };
     (function() {
-        geetest('{{ $geetest_url?$geetest_url:Config::get('geetest.geetest_url', '/auth/geetest') }}');
+        geetest('{{ $geetest_url?$geetest_url:Config::get('geetest.geetest_url', 'geetest') }}');
     })();
 </script>
 <style>

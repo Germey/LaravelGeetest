@@ -126,14 +126,12 @@ class BaseController extends Controller
    */
   public function postValidate(Request $request)
   {
-    $result = $this->validate($request, [
+    $this->validate($request, [
       'geetest_challenge' => 'geetest',
     ], [
       'geetest' => config('geetest.server_fail_alert')
     ]);
-    if ($result) {
-      return 'success';
-    }
+    return true;
   }
 } 
 ```

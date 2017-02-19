@@ -121,18 +121,18 @@ use Illuminate\Http\Request;
 
 class BaseController extends Controller 
 {
-  /**
-   * @param Request $request
-   */
-  public function postValidate(Request $request)
-  {
-    $this->validate($request, [
-      'geetest_challenge' => 'geetest',
-    ], [
-      'geetest' => config('geetest.server_fail_alert')
-    ]);
-    return true;
-  }
+    /**
+     * @param Request $request
+     */
+    public function postValidate(Request $request)
+    {
+        $this->validate($request, [
+            'geetest_challenge' => 'geetest',
+        ], [
+            'geetest' => config('geetest.server_fail_alert')
+        ]);
+        return true;
+    }
 } 
 ```
 
@@ -200,13 +200,13 @@ use App\Http\Requests\ValidationRequest;
 
 class BaseController extends Controller 
 {
-  /**
-   * @param Request $request
-   */
-  public function postValidate(ValidationRequest $request)
-  {
-    // is Validate
-  }
+    /**
+     * @param Request $request
+     */
+    public function postValidate(ValidationRequest $request)
+    {
+        // is Validate
+    }
 } 
 ```
 

@@ -30,7 +30,7 @@
                 initGeetest({
                     gt: data.gt,
                     challenge: data.challenge,
-                    product: "{{ Config::get('geetest.product', 'float') }}",
+                    product: "{{ $product?$product:Config::get('geetest.product', 'float') }}",
                     offline: !data.success,
                     new_captcha: data.new_captcha,
                     lang: '{{ Config::get('geetest.lang', 'zh-cn') }}',

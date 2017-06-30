@@ -3,17 +3,21 @@
 [![Build Status](https://travis-ci.org/Germey/LaravelGeetest.svg?branch=master)](https://travis-ci.org/Germey/LaravelGeetest)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg?maxAge=2592000?style=plastic)](https://github.com/Germey/LaravelGeetest)
 [![Support](https://img.shields.io/badge/support-laravel-orange.svg)](https://laravel.com/)
-[![Release](https://img.shields.io/badge/release-v2.0.0-red.svg)](https://github.com/Germey/LaravelGeetest/releases)
+[![Release](https://img.shields.io/badge/release-3.0.0-orange.svg)](https://github.com/Germey/LaravelGeetest/releases)
 
 Laravel Geetest is a package for Laravel 5 developed by [Germey](http://cuiqingcai.com). It provides simple usage for laravel of [Geetest](http://www.geetest.com/). 
 
-Geetest Demo: [Geetest](http://www.geetest.com/exp_normal)
+Geetest Demo: [Geetest](http://www.geetest.com/exp.html)
 
-![Geetest Image Demo](http://opencdn.cuiqingcai.com/QQ20160726-0@2x.png)
+![Geetest Image Demo](https://ws1.sinaimg.cn/large/006tKfTcly1fh3qz9znw8j30fw0cejrt.jpg) ![Geetest Image Demo](https://ws1.sinaimg.cn/large/006tKfTcly1fh3qjs2nv7j30fe0fu758.jpg)
 
 ## Installation
 
 Laravel 5.0 or later is required.
+
+This Package is now support Geetest 3.0. 
+
+For Geetest 2.0, please go to [LaravelGeetest 2.0](https://github.com/Germey/LaravelGeetest/tree/v2.0.3)
 
 To get the latest version of Laravel Geetest, simply require the project using Composer:
 
@@ -24,7 +28,7 @@ $ composer require germey/geetest
 Or you can add following to `require` key in `composer.json`.
 
 ```json
-"germey/geetest": "~2.0"
+"germey/geetest": "~3.0"
 ```
 
 then run
@@ -63,7 +67,7 @@ Firstly, You need to register in [Geetest](http://www.geetest.com/). Creating an
 
 For example. You can see app `ID` and `KEY` after you added an app in [Geetest Admin Page](http://account.geetest.com/manage)
 
-![](https://ww1.sinaimg.cn/large/006tNbRwly1fcdsqp81loj31jw0oqmy1.jpg)
+![](https://ws3.sinaimg.cn/large/006tKfTcly1fh3qherw91j31kw0e6q4p.jpg)
 
 Then configure them in your `.env` file because you'd better not make them public.
 
@@ -85,7 +89,7 @@ Then, You can use `render()` in views like following. It will render a geetest c
 ```html
 <form action="/" method="post">
     <input name="_token" type="hidden" value="{{ csrf_token() }}">
-    <input type="text" name="name">
+    <input type="text" name="name" placeholder="name">
     {!! Geetest::render() !!}
     <input type="submit" value="submit">
 </form>
@@ -93,15 +97,18 @@ Then, You can use `render()` in views like following. It will render a geetest c
 
 It will render like this.
 
-![](https://ww4.sinaimg.cn/large/006tNbRwly1fcdsbrinxaj30he05kjrd.jpg)
+![](https://ws4.sinaimg.cn/large/006tKfTcly1fh3qp3fhafj30i8052q37.jpg)
+
 
 When you click the `submit` button, it will verify the Geetest Code. If you didn't complete the validation, it will alert some text and prevent the form from submitting.
 
 Or you can set other style of Geetest.
 
 ```php
-{!! Geetest::render('embed') !!}
+{!! Geetest::render('float') !!}
+{!! Geetest::render('bind') !!}
 {!! Geetest::render('popup') !!}
+{!! Geetest::render('custom') !!}
 ```
 
 Then it will be embed or popup style in the website. Default to `float`.
@@ -214,7 +221,7 @@ class BaseController extends Controller
 
 ### Change Ajax Url
 
-If you want to change the Geetest Ajax Url, you can configure it in `config/geetest.php`, change `geetest_url` as you like, but at this time you need to add extra routes in your `routes.php` (Laravel 5.2 or former ) or `routes/web.php` (Laravel 5.3 or later). And you need to add a triat in your controller.
+If you want to change the Geetest Ajax Url, you can configure it in `config/geetest.php`, change `url` as you like, but at this time you need to add extra routes in your `routes.php` (Laravel 5.2 or former ) or `routes/web.php` (Laravel 5.3 or later). And you need to add a triat in your controller.
 
 For example, If you add this route,
 
@@ -233,7 +240,7 @@ class AuthController extends Controller {
 
 Then an Ajax url is configured successfully.
 
-Also you can use this Trait in other Controller but you need to configure  `geetest_url` in `config/geetest.php`.
+Also you can use this Trait in other Controller but you need to configure  `url` in `config/geetest.php`.
 
 ### Configure Url while rendering
 
@@ -243,13 +250,13 @@ Also, you can set Geetest Ajax Url by following way.
 {!! Geetest::setGeetestUrl('/auth/geetest')->render() !!}
 ```
 
-By `setGeetestUrl` method you can set Geetest Ajax Url. If it is configured, it will override `geetest_url` configured in `config/geetest.php`.
+By `setGeetestUrl` method you can set Geetest Ajax Url. If it is configured, it will override `url` configured in `config/geetest.php`.
 
 ### Configure Alert Message
 
 You can configure alert message by configure `client_fail_alert` and `server_fail_alert` in `config/geetest.php`.
 
-## Language
+### Configure Language
 
 Geetest supports different language.
 
@@ -275,13 +282,47 @@ for example, If you want to use Korean, just change `lang` key to `ko`
 'lang' => 'ko'
 ```
 
+### Configure Protocol
+
+You can configure protocol in `config/geetest.php` .
+
+for example, If you want to use https, just change `protocol` key to `https`
+
+```php
+'protocol' => 'https'
+```
+
+### Configure Default Product
+
+You can configure default product in `config/geetest.php` .
+
+for example, If you want to use popup product, just change `product` key to `popup`
+
+```php
+'product' => 'popup'
+```
+
+Mind that it only works when you use like this:
+
+```php
+{!! Geetest::render() !!}
+```
+
+If you use like this:
+
+```php
+{!! Geetest::render('bind') !!}
+```
+
+It will override the configuration in `config/geetest.php`.
+
 ## Contribution
 
 If you find something wrong with this package, you can send an email to `cqc@cuiqingcai.com`
 
 Or just send a pull request to this repository. 
 
-Pull Requests are welcome.
+Pull Requests are really welcomed.
 
 ## Author
 

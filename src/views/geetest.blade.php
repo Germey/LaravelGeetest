@@ -32,6 +32,7 @@
                     challenge: data.challenge,
                     product: "{{ Config::get('geetest.product', 'float') }}",
                     offline: !data.success,
+                    new_captcha: data.new_captcha,
                     lang: '{{ Config::get('geetest.lang', 'zh-cn') }}',
                     http: '{{ Config::get('geetest.protocol', 'http') }}' + '://'
                 }, handlerEmbed);

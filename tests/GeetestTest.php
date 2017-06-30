@@ -15,8 +15,12 @@ class GeetestTest extends PHPUnit_Framework_TestCase
      */
     public function testProcess()
     {
-        $user_id = $this->user_id;
-        Geetest::shouldReceive('preProcess')->once()->with($user_id)->andReturn();
+	    $data = [
+		    'user_id' => $this->user_id,
+		    'client_type' => 'web',
+		    'ip_address' => '127.0.0.1'
+	    ];
+        Geetest::shouldReceive('preProcess')->once()->with($data)->andReturn();
     }
 
     /**
@@ -32,9 +36,9 @@ class GeetestTest extends PHPUnit_Framework_TestCase
      */
     public function testRender()
     {
-        Geetest::shouldReceive('render')->once()->with()->andReturn();
+        Geetest::shouldReceive('render')->once()->with('float')->andReturn();
         Geetest::shouldReceive('render')->once()->with('popup')->andReturn();
-        Geetest::shouldReceive('render')->once()->with('embed')->andReturn();
+        Geetest::shouldReceive('render')->once()->with('bind')->andReturn();
     }
 
 }

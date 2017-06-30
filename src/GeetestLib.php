@@ -12,12 +12,12 @@ class GeetestLib
 	/**
 	 * @var int
 	 */
-	public static $connectTimeout = 1;
+	public static $connectTimeout = 5;
 
 	/**
 	 * @var int
 	 */
-	public static $socketTimeout = 1;
+	public static $socketTimeout = 5;
 
 	/**
 	 * @var
@@ -27,7 +27,7 @@ class GeetestLib
 	/**
 	 * @var string
 	 */
-	protected $geetest_url = '';
+	protected $url = '';
 
 	/**
 	 * @var
@@ -44,15 +44,15 @@ class GeetestLib
 	 */
 	public function getGeetestUrl()
 	{
-		return $this->geetest_url;
+		return $this->url;
 	}
 
 	/**
 	 * @param string $geetestUrl
 	 */
-	public function setGeetestUrl($geetest_url)
+	public function setGeetestUrl($url)
 	{
-		$this->geetest_url = $geetest_url;
+		$this->url = $url;
 	}
 
 	/**
@@ -60,8 +60,8 @@ class GeetestLib
 	 */
 	public function __construct()
 	{
-		$this->captcha_id = Config::get('geetest.geetest_id');
-		$this->private_key = Config::get('geetest.geetest_key');
+		$this->captcha_id = Config::get('geetest.id');
+		$this->private_key = Config::get('geetest.key');
 	}
 
 	/**
@@ -312,7 +312,7 @@ class GeetestLib
 	{
 		return view('geetest::geetest', [
 			'product' => $product,
-			'geetest_url' => $this->geetest_url
+			'url' => $this->url
 		]);
 	}
 

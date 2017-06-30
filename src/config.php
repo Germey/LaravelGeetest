@@ -21,7 +21,7 @@ return [
 	| Here you can config your yunpian api key from yunpian provided.
 	|
 	*/
-	'geetest_id' => env('GEETEST_ID'),
+	'id' => env('GEETEST_ID'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
 	| Here you can config your yunpian api key from yunpian provided.
 	|
 	*/
-	'geetest_key' => env('GEETEST_KEY'),
+	'key' => env('GEETEST_KEY'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,32 @@ return [
 	| Here you can config your geetest url for ajax validation.
 	|
 	*/
-	'geetest_url' => '/geetest',
+	'url' => '/geetest',
+
+	/*
+	|--------------------------------------------------------------------------
+	| Config Geetest Protocol
+	|--------------------------------------------------------------------------
+	|
+	| Here you can config your geetest url for ajax validation.
+	| 
+	| Options: http or https
+	|
+	*/
+	'protocol' => 'http',
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Config Geetest Product
+	|--------------------------------------------------------------------------
+	|
+	| Here you can config your geetest url for ajax validation.
+	| 
+	| Options: float, popup, custom, bind
+	|
+	*/
+	'product' => 'float',
 
 	/*
 	|--------------------------------------------------------------------------

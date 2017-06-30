@@ -30,19 +30,20 @@
                 initGeetest({
                     gt: data.gt,
                     challenge: data.challenge,
-                    product: "{{ $product }}",
+                    product: "{{ Config::get('geetest.product', 'float') }}",
                     offline: !data.success,
-                    lang: '{{ Config::get('geetest.lang', 'zh-cn') }}'
+                    lang: '{{ Config::get('geetest.lang', 'zh-cn') }}',
+                    http: '{{ Config::get('geetest.protocol', 'http') }}' + '://'
                 }, handlerEmbed);
             }
         });
     };
     (function() {
-        geetest('{{ $geetest_url?$geetest_url:Config::get('geetest.geetest_url', 'geetest') }}');
+        geetest('{{ $url?$url:Config::get('geetest.url', 'geetest') }}');
     })();
 </script>
 <style>
-.hide {
-    display: none;
-}
+    .hide {
+        display: none;
+    }
 </style>

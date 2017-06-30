@@ -65,7 +65,7 @@ It will also generate a views folder named `resources/views/vendor/geetest`, the
 
 Firstly, You need to register in [Geetest](http://www.geetest.com/). Creating an app and get `ID` and `KEY`.
 
-For example. You can see app `ID` and `KEY` after you added an app in [Geetest Admin Page](http://account.geetest.com/manage)
+For example. You can see app `ID` and `KEY` after you added an app in [Geetest Admin Page](http://account.geetest.com)
 
 ![](https://ws3.sinaimg.cn/large/006tKfTcly1fh3qherw91j31kw0e6q4p.jpg)
 

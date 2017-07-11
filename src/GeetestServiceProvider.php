@@ -21,7 +21,7 @@ class GeetestServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/views' => base_path('resources/views/vendor/geetest'),
 			__DIR__ . '/config.php' => config_path('geetest.php'),
-		],'geetest');
+		], 'geetest');
 
 		Route::get('geetest', 'Germey\Geetest\GeetestController@getGeetest');
 

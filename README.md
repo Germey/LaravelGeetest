@@ -54,7 +54,7 @@ And you can register the Geetest Facade in the `aliases` of `config/app.php` .
 To get started, you need to publish vendor assets using the following command.
 
 ```
-$ php artisan vendor:publish
+$ php artisan vendor:publish --tag=geetest
 ```
 
 This will create a config file named `config/geetest.php` which you can configure geetest as you like.

@@ -15,9 +15,9 @@ Geetest Demo: [Geetest](http://www.geetest.com/exp.html)
 
 Laravel 5.0 or later is required.
 
-This Package is now support Geetest 3.0. 
+This Package now supports Geetest 3.0. 
 
-For Geetest 2.0, please go to [LaravelGeetest 2.0](https://github.com/Germey/LaravelGeetest/tree/v2.0.3)
+For Geetest 2.0, please see [LaravelGeetest 2.0](https://github.com/Germey/LaravelGeetest/tree/v2.0.3)
 
 To get the latest version of Laravel Geetest, simply require the project using Composer:
 
@@ -25,25 +25,25 @@ To get the latest version of Laravel Geetest, simply require the project using C
 $ composer require germey/geetest
 ```
 
-Or you can add following to `require` key in `composer.json`.
+Or you can add following to `require` key in `composer.json`:
 
 ```json
 "germey/geetest": "~3.0"
 ```
 
-then run
+then run:
 
 ```
 $ composer update
 ```
 
-Next, You should need to register the service provider. Open up `config/app.php` and add following into the `providers` key.
+Next, You should need to register the service provider. Open up `config/app.php` and add following into the `providers` key:
 
 ```php
 Germey\Geetest\GeetestServiceProvider::class
 ```
 
-And you can register the Geetest Facade in the `aliases` of `config/app.php` .
+And you can register the Geetest Facade in the `aliases` of `config/app.php` :
 
 ```php
 'Geetest' => Germey\Geetest\Geetest::class
@@ -51,7 +51,7 @@ And you can register the Geetest Facade in the `aliases` of `config/app.php` .
 
 ## Configuration
 
-To get started, you need to publish vendor assets using the following command.
+To get started, you need to publish vendor assets using the following command:
 
 ```
 $ php artisan vendor:publish --tag=geetest
@@ -71,20 +71,20 @@ For example. You can see app `ID` and `KEY` after you added an app in [Geetest A
 
 Then configure them in your `.env` file because you'd better not make them public.
 
-Add them to `.env` as follows.
+Add them to `.env` as follows:
 
 ```
 GEETEST_ID=0f1097bef7xxxxxx9afdeced970c63e4
 GEETEST_KEY=c070f0628xxxxxxe68e138b55c56fb3b
 ```
 
-Then, You can use `render()` in views like following. It will render a geetest code captcha.
+Then, You can use `render()` in views like following, It will render a geetest code captcha:
 
 ```php
 {!! Geetest::render() !!}
 ```
 
- For example, you can use it in `form` like this.
+ For example, you can use it in `form` like this:
 
 ```html
 <form action="/" method="post">
@@ -95,14 +95,14 @@ Then, You can use `render()` in views like following. It will render a geetest c
 </form>
 ```
 
-It will render like this.
+It will render like this:
 
 ![](https://ws4.sinaimg.cn/large/006tKfTcly1fh3qp3fhafj30i8052q37.jpg)
 
 
 When you click the `submit` button, it will verify the Geetest Code. If you didn't complete the validation, it will alert some text and prevent the form from submitting.
 
-Or you can set other style of Geetest.
+Or you can set other style of Geetest:
 
 ```php
 {!! Geetest::render('float') !!}
@@ -121,7 +121,7 @@ What's the reason that Geetest is safe? If it only has client validation of fron
 
 First I have to say that you can only use Geetest of Frontend. But you can also do simple things to achieve server validation.
 
-You can use `$this->validate()` method to achieve server validation. Here is an example.
+You can use `$this->validate()` method to achieve server validation. Here is an example:
 
 ```php
 use Illuminate\Http\Request;
@@ -145,7 +145,7 @@ class BaseController extends Controller
 
 If we use Geetest, the form will post three extra parameters `geetest_challenge` `geetest_validate` `geetest_seccode`. Geetest use these three parameters to achieve server validation.
 
-If you use ORM, we don't need to add these keys to Model, so you should add following in Model.
+If you use ORM, we don't need to add these keys to Model, so you should add following in Model:
 
 ```php
 protected $guarded = ['geetest_challenge', 'geetest_validate', 'geetest_seccode'];
@@ -153,7 +153,7 @@ protected $guarded = ['geetest_challenge', 'geetest_validate', 'geetest_seccode'
 
 You can define alert text by altering `server_fail_alert` in `config/geetest.php`
 
-Also you can use Request to achieve validation.
+Also you can use Request to achieve validation:
 
 ```php
 <?php namespace App\Http\Requests;
@@ -198,7 +198,7 @@ class ValidationRequest extends Request
 
 ```
 
-We can use it in our Controller by Request parameter.
+We can use it in our Controller by Request parameter:
 
 ```php
 use Illuminate\Support\Facades\Config;
@@ -223,13 +223,13 @@ class BaseController extends Controller
 
 If you want to change the Geetest Ajax Url, you can configure it in `config/geetest.php`, change `url` as you like, but at this time you need to add extra routes in your `routes.php` (Laravel 5.2 or former ) or `routes/web.php` (Laravel 5.3 or later). And you need to add a triat in your controller.
 
-For example, If you add this route,
+For example, If you add this route:
 
 ```php
 Route::get('auth/geetest','Auth\AuthController@getGeetest');
 ```
 
-you need to add  `Germey\Geetest\GeetestCaptcha` in your `AuthController` 
+you need to add  `Germey\Geetest\GeetestCaptcha` in your `AuthController`:
 
 ```php
 use Germey\Geetest\GeetestCaptcha;
@@ -244,7 +244,7 @@ Also you can use this Trait in other Controller but you need to configure  `url`
 
 ### Configure Url while rendering
 
-Also, you can set Geetest Ajax Url by following way.
+Also, you can set Geetest Ajax Url by following way:
 
 ```php
 {!! Geetest::setGeetestUrl('/auth/geetest')->render() !!}
@@ -268,7 +268,7 @@ Geetest supports different language.
 
 You can configure it in `config/geetest.php` .
 
-Here are key-values of Languge Configuration.
+Here are key-values of Languge Configuration:
 
 - zh-cn (Simplified Chinese) 
 - zh-tw (Traditional Chinese)
@@ -276,7 +276,7 @@ Here are key-values of Languge Configuration.
 - ja (Japanese)
 - ko (Korean)
 
-for example, If you want to use Korean, just change `lang` key to `ko`
+for example, If you want to use Korean, just change `lang` key to `ko`:
 
 ```php
 'lang' => 'ko'
@@ -286,7 +286,7 @@ for example, If you want to use Korean, just change `lang` key to `ko`
 
 You can configure protocol in `config/geetest.php` .
 
-for example, If you want to use https, just change `protocol` key to `https`
+for example, If you want to use https, just change `protocol` key to `https`:
 
 ```php
 'protocol' => 'https'
@@ -296,7 +296,7 @@ for example, If you want to use https, just change `protocol` key to `https`
 
 You can configure default product in `config/geetest.php` .
 
-for example, If you want to use popup product, just change `product` key to `popup`
+for example, If you want to use popup product, just change `product` key to `popup`:
 
 ```php
 'product' => 'popup'

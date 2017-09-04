@@ -258,7 +258,7 @@ You can configure alert message by configure `client_fail_alert` and `server_fai
 
 ### Configure Language
 
-Geetest supports different language.
+Geetest supports different language:
 
 * Simplified Chinese
 * Traditional Chinese

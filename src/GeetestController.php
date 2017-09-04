@@ -2,8 +2,9 @@
 
 namespace Germey\Geetest;
 
+use Illuminate\Routing\Controller;
 
-class GeetestController
+class GeetestController extends Controller
 {
 	use GeetestCaptcha;
 }

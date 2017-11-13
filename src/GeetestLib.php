@@ -115,7 +115,8 @@ class GeetestLib
 		$result = [
 			'success' => 0,
 			'gt' => $this->captcha_id,
-			'challenge' => $challenge
+			'challenge' => $challenge,
+			'new_captcha' => 1
 		];
 		$this->response = $result;
 	}

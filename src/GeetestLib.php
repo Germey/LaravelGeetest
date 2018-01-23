@@ -309,12 +309,14 @@ class GeetestLib
 	/**
 	 * @param string $product
 	 */
-	public function render($product = 'float')
+	public function render($product = 'float', $captchaId = 'geetest-captcha')
 	{
 		return view('geetest::geetest', [
+			'captchaid' => $captchaId,
 			'product' => $product,
 			'url' => $this->url
 		]);
 	}
 
 }
+

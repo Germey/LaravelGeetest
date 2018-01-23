@@ -1,25 +1,25 @@
 <script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
 <script src="https://static.geetest.com/static/tools/gt.js"></script>
-<div id="geetest-captcha"></div>
+<div id="{{ $captchaid }}"></div>
 <p id="wait" class="show">正在加载验证码...</p>
 @define use Illuminate\Support\Facades\Config
 <script>
     var geetest = function(url) {
         var handlerEmbed = function(captchaObj) {
-            $("#geetest-captcha").closest('form').submit(function(e) {
+            $("#{{ $captchaid }}").closest('form').submit(function(e) {
                 var validate = captchaObj.getValidate();
                 if (!validate) {
                     alert('{{ Config::get('geetest.client_fail_alert')}}');
                     e.preventDefault();
                 }
             });
-            captchaObj.appendTo("#geetest-captcha");
+            captchaObj.appendTo("#{{ $captchaid }}");
             captchaObj.onReady(function() {
                 $("#wait")[0].className = "hide";
             });
             if ('{{ $product }}' == 'popup') {
-                captchaObj.bindOn($('#geetest-captcha').closest('form').find(':submit'));
-                captchaObj.appendTo("#geetest-captcha");
+                captchaObj.bindOn($('#{{ $captchaid }}').closest('form').find(':submit'));
+                captchaObj.appendTo("#{{ $captchaid }}");
             }
         };
         $.ajax({

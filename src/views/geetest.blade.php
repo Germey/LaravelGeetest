@@ -1,7 +1,7 @@
 <script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
 <script src="https://static.geetest.com/static/tools/gt.js"></script>
 <div id="{{ $captchaid }}"></div>
-<p id="wait" class="show">正在加载验证码...</p>
+<p id="wait-{{ $captchaid }}" class="show">正在加载验证码...</p>
 @define use Illuminate\Support\Facades\Config
 <script>
     var geetest = function(url) {
@@ -15,7 +15,7 @@
             });
             captchaObj.appendTo("#{{ $captchaid }}");
             captchaObj.onReady(function() {
-                $("#wait")[0].className = "hide";
+                $("#wait-{{ $captchaid }}")[0].className = "hide";
             });
             if ('{{ $product }}' == 'popup') {
                 captchaObj.bindOn($('#{{ $captchaid }}').closest('form').find(':submit'));

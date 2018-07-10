@@ -53,7 +53,7 @@ return [
 	| Options: http or https
 	|
 	*/
-	'protocol' => 'http',
+	'protocol' => request()->getScheme(),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -49,10 +49,12 @@ class GeetestLib
 
 	/**
 	 * @param string $geetestUrl
+     * @return GeetestLib
 	 */
 	public function setGeetestUrl($url)
 	{
 		$this->url = $url;
+		return $this;
 	}
 
 	/**

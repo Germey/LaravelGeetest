@@ -1,6 +1,6 @@
 <?php namespace Germey\Geetest;
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +14,7 @@ class GeetestServiceProvider extends ServiceProvider
 	 *
 	 * @return void
 	 */
-	public function boot(Request $request)
+	public function boot()
 	{
 		$this->loadViewsFrom(__DIR__ . '/views', 'geetest');
 
@@ -25,12 +25,12 @@ class GeetestServiceProvider extends ServiceProvider
 
 		Route::get('geetest', 'Germey\Geetest\GeetestController@getGeetest');
 
-		Validator::extend('geetest', function () use ($request) {
-			list($geetest_challenge, $geetest_validate, $geetest_seccode) = array_values($request->only('geetest_challenge', 'geetest_validate', 'geetest_seccode'));
+		Validator::extend('geetest', function () {
+			list($geetest_challenge, $geetest_validate, $geetest_seccode) = array_values(\request()->only('geetest_challenge', 'geetest_validate', 'geetest_seccode'));
 			$data = [
 				'user_id' => @Auth::user()?@Auth::user()->id:'UnLoginUser',
 				'client_type' => 'web',
-				'ip_address' => $request->ip()
+				'ip_address' => \request()->ip()
 			];
 			if (session()->get('gtserver') == 1) {
 				if (Geetest::successValidate($geetest_challenge, $geetest_validate, $geetest_seccode, $data)) {

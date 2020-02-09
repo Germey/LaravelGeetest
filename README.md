@@ -9,9 +9,7 @@ This package is no longer maintained but not archived, pull requests and upgrade
 
 Laravel Geetest is a package for Laravel 5 developed by [Germey](http://cuiqingcai.com). It provides simple usage for laravel of [Geetest](http://www.geetest.com/). 
 
-Geetest Demo: [Geetest](http://www.geetest.com/exp.html)
-
-![Geetest Image Demo](https://ws1.sinaimg.cn/large/006tKfTcly1fh3r6z13n1j30wu0eidha.jpg)
+Geetest Demo: [Geetest](https://www.geetest.com/show)
 
 ## Installation
 

@@ -59,7 +59,7 @@ class GeetestServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->singleton('geetest', function () {
-			return $this->app->make('Germey\Geetest\GeetestLib');
+			return $this->app->make(GeetestLib::class);
 		});
 	}
 }
